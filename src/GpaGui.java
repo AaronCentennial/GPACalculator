@@ -24,11 +24,12 @@ public class GpaGui extends JFrame implements ActionListener {
 	private JPanel _rowPanel;
 	private JLabel _titleLbl;
 	private GridLayout _grid;
-	private ArrayList<Component[]> _rowPanelElements;
+
+//	private ArrayList<Component[]> _rowPanelElements;
 
 	GpaGui(){
 		super("GPA Calculator");
-		this._rowPanelElements=new ArrayList<>();
+//		this._rowPanelElements=new ArrayList<>();
 		this._initFrame();
 		this._addActionListeners();
 	}
@@ -72,11 +73,11 @@ public class GpaGui extends JFrame implements ActionListener {
 	}
 
 	private void _calculateBtnAction() {
-//		Component component : this._rowPanel.getComponents()
+
 		Component[] components=this._rowPanel.getComponents();
-		for (int i=0;i<components.length;i++){
-			if (components[i] instanceof JTextField ){
-					System.out.print(((JTextField) components[i]).getText()+"\n");
+		for (Component component : components) {
+			if (component instanceof JTextField) {
+				System.out.print(((JTextField) component).getText() + "\n");
 			}
 
 		}
@@ -102,12 +103,14 @@ public class GpaGui extends JFrame implements ActionListener {
 
 	private void createUIComponents() {
 		this._grid = new GridLayout(0,4);
+//		this._grid.setRows(10);
 
 		this._grid.setHgap(3);
 		this._grid.setVgap(3);
-		
+
 		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10"});
 		this._rowPanel=new JPanel(this._grid);
-		this._rowPanel.setMinimumSize(new Dimension(0,0));
+		this._rowPanel.setMinimumSize(new Dimension(200,200));
+
 	}
 }
