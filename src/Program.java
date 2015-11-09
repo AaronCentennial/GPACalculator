@@ -9,6 +9,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Program {
 	public static void main(String[] args){
+		System.out.print(System.getProperties().get("os.name"));
+
 		for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 			if ("GTK+".equals(info.getName()) || "windows".equals(info.getName()) || "substance".equals(info.getName())) {
 				try {
@@ -27,6 +29,6 @@ public class Program {
 		}
 
 
-		GpaGui gui = new GpaGui();
+		new GpaGui();
 	}
 }

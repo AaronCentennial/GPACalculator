@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Objects;
 
 /*
  * Created by Aaron Fernandes(300773526) on November 2015.
@@ -17,14 +19,16 @@ public class GpaGui extends JFrame implements ActionListener {
 	private JButton _calculateBtn;
 	private JLabel _gpaTotalTxt;
 	private JButton _exitBtn;
-	private JScrollPane _sceoolPane;
+	private JScrollPane _scrollPane;
 
 	private JPanel _rowPanel;
 	private JLabel _titleLbl;
 	private GridLayout _grid;
+	private ArrayList<Component[]> _rowPanelElements;
 
 	GpaGui(){
 		super("GPA Calculator");
+		this._rowPanelElements=new ArrayList<>();
 		this._initFrame();
 		this._addActionListeners();
 	}
@@ -42,6 +46,7 @@ public class GpaGui extends JFrame implements ActionListener {
 	private void _addActionListeners() {
 		this._exitBtn.addActionListener(this);
 		this._numCoursesCbx.addActionListener(this);
+		this._calculateBtn.addActionListener(this);
 	}
 
 	private void _addRows(int numRows){
@@ -67,8 +72,13 @@ public class GpaGui extends JFrame implements ActionListener {
 	}
 
 	private void _calculateBtnAction() {
-		for (Component compnent : this._rowPanel.getComponents()){
-			System.out.print(compnent.getName());
+//		Component component : this._rowPanel.getComponents()
+		Component[] components=this._rowPanel.getComponents();
+		for (int i=0;i<components.length;i++){
+			if (components[i] instanceof JTextField ){
+					System.out.print(((JTextField) components[i]).getText()+"\n");
+			}
+
 		}
 	}
 
@@ -85,14 +95,17 @@ public class GpaGui extends JFrame implements ActionListener {
 			}catch (NumberFormatException e){e.printStackTrace();}
 		}
 		if (actionEvent.getSource()==this._calculateBtn){
-//			this._calculateBtnAction();
-			JOptionPane.showMessageDialog(null,"LKSD");
+			this._calculateBtnAction();
 		}
 
 	}
 
 	private void createUIComponents() {
 		this._grid = new GridLayout(0,4);
+
+		this._grid.setHgap(3);
+		this._grid.setVgap(3);
+		
 		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10"});
 		this._rowPanel=new JPanel(this._grid);
 		this._rowPanel.setMinimumSize(new Dimension(0,0));

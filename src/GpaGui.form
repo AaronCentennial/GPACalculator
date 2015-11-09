@@ -84,7 +84,7 @@
           <text value="Exit"/>
         </properties>
       </component>
-      <scrollpane id="4362f" binding="_sceoolPane">
+      <scrollpane id="4362f" binding="_scrollPane">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -107,7 +107,7 @@
           <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="DejaVu Sans" size="28" style="1"/>
+          <font name="DejaVu Sans" size="36" style="1"/>
           <icon value="images/pass2.png"/>
           <iconTextGap value="10"/>
           <text value="GPA Calculator"/>
