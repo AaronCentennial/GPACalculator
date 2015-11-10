@@ -63,7 +63,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._gc.gridy=0;
 		this._gc.ipadx=0;
 		this._gc.ipady=0;
-
+		
 
 		this._rowPanel.add(l,this._gc);
 
@@ -98,7 +98,14 @@ public class GpaGui extends JFrame implements ActionListener {
 	}
 
 	private void createUIComponents() {
+		this._grid = new GridLayout(0,4,4,4);
+
+		this._gc=new GridBagConstraints();
+
+
 		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10","100"});
+		this._rowPanel=new JPanel(new GridBagLayout());
+//		this._rowPanel=new JPanel(this._grid);
 	}
 
 	@Override

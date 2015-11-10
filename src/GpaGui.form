@@ -94,10 +94,10 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="8c9e0" binding="_rowPanel" layout-manager="GridBagLayout">
+          <grid id="8c9e0" binding="_rowPanel" custom-create="true" layout-manager="CardLayout" hgap="0" vgap="0">
             <constraints/>
             <properties>
-              <autoscrolls value="true"/>
+              <autoscrolls value="false"/>
             </properties>
             <border type="none"/>
             <children/>
