@@ -38,9 +38,9 @@ public class GpaGui extends JFrame implements ActionListener {
 		setContentPane(this._contentPane);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(new ImageIcon(getClass().getResource("/images/edit-text.png")).getImage());
-		setMinimumSize(new Dimension(650,300));
-		setSize(700,500);
-		setLocation(400,100);
+		setMinimumSize(new Dimension(650, 300));
+		setSize(700, 500);
+		setLocation(400, 100);
 		setVisible(true);
 	}
 
@@ -83,6 +83,18 @@ public class GpaGui extends JFrame implements ActionListener {
 		}
 	}
 
+	private void createUIComponents() {
+		this._grid = new GridLayout(0,4);
+
+		this._grid.setHgap(3);
+		this._grid.setVgap(3);
+
+		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10"});
+		this._rowPanel=new JPanel(this._grid);
+		this._rowPanel.setMinimumSize(new Dimension(200,200));
+
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 
@@ -101,16 +113,4 @@ public class GpaGui extends JFrame implements ActionListener {
 
 	}
 
-	private void createUIComponents() {
-		this._grid = new GridLayout(0,4);
-//		this._grid.setRows(10);
-
-		this._grid.setHgap(3);
-		this._grid.setVgap(3);
-
-		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10"});
-		this._rowPanel=new JPanel(this._grid);
-		this._rowPanel.setMinimumSize(new Dimension(200,200));
-
-	}
 }
