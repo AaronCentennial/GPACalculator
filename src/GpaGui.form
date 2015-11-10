@@ -89,8 +89,8 @@
           <grid row="5" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <autoscrolls value="true"/>
-          <verticalScrollBarPolicy value="22"/>
+          <autoscrolls value="false"/>
+          <verticalScrollBarPolicy value="20"/>
         </properties>
         <border type="none"/>
         <children>

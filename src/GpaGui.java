@@ -23,7 +23,9 @@ public class GpaGui extends JFrame implements ActionListener {
 
 	private JPanel _rowPanel;
 	private JLabel _titleLbl;
+
 	private GridLayout _grid;
+	private GridBagConstraints _gc;
 
 //	private ArrayList<Component[]> _rowPanelElements;
 
@@ -56,20 +58,32 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._rowPanel.revalidate();
 		this._rowPanel.validate();
 
+		JLabel l = new JLabel("Nr:");
+		this._gc.gridx=0;
+		this._gc.gridy=0;
+		this._gc.ipadx=0;
+		this._gc.ipady=0;
+		
+
+		this._rowPanel.add(l,this._gc);
+
+/*
 		this._rowPanel.add(new JLabel("Nr:"));
 		this._rowPanel.add(new JLabel("Course Code:"));
 		this._rowPanel.add(new JLabel("Credit Hours:"));
 		this._rowPanel.add(new JLabel("Grade:"));
+*/
 
-
+/*
 		for (int i=0; i<numRows; i++){
 			this._rowPanel.add(new JLabel((i+1)+". "));
 			this._rowPanel.add(new JTextField());
 			this._rowPanel.add(new JComboBox<>(new Integer[]{1,2,3,4,5}));
 			this._rowPanel.add(new JComboBox<>(new String[]{"","A+ 90-100%","A 80-89%","B+ 75-79%","B 75-79%","C+ 65-69%","C 60-64%","D+ 55-59%","D 50-54%","F 0-49%"}));
-		}
+		}*/
 		this._rowPanel.revalidate();
 		this._rowPanel.validate();
+//		this.pack();
 	}
 
 	private void _calculateBtnAction() {
@@ -84,15 +98,14 @@ public class GpaGui extends JFrame implements ActionListener {
 	}
 
 	private void createUIComponents() {
-		this._grid = new GridLayout(0,4);
+		this._grid = new GridLayout(0,4,4,4);
 
-		this._grid.setHgap(3);
-		this._grid.setVgap(3);
+		this._gc=new GridBagConstraints();
 
-		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10"});
-		this._rowPanel=new JPanel(this._grid);
-		this._rowPanel.setMinimumSize(new Dimension(200,200));
 
+		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10","100"});
+		this._rowPanel=new JPanel(new GridBagLayout());
+//		this._rowPanel=new JPanel(this._grid);
 	}
 
 	@Override
@@ -107,7 +120,7 @@ public class GpaGui extends JFrame implements ActionListener {
 				this._addRows(selected);
 			}catch (NumberFormatException e){e.printStackTrace();}
 		}
-		if (actionEvent.getSource()==this._calculateBtn){
+		else if (actionEvent.getSource()==this._calculateBtn){
 			this._calculateBtnAction();
 		}
 
