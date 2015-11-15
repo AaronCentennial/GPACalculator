@@ -22,6 +22,7 @@
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <labelFor value="90e27"/>
           <text value="Current GPA:"/>
         </properties>
       </component>
@@ -38,6 +39,7 @@
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <labelFor value="cfb99"/>
           <text value="Number of Courses: "/>
         </properties>
       </component>
@@ -63,7 +65,7 @@
         </constraints>
         <properties>
           <icon value="images/calculate7.png"/>
-          <text value="Calculate"/>
+          <text value="&amp;Calculate"/>
         </properties>
       </component>
       <component id="7d1c5" class="javax.swing.JLabel" binding="_gpaTotalTxt">
@@ -81,7 +83,7 @@
         </constraints>
         <properties>
           <icon value="images/closed69.png"/>
-          <text value="Exit"/>
+          <text value="&amp;Exit"/>
         </properties>
       </component>
       <scrollpane id="4362f" binding="_scrollPane">

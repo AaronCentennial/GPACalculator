@@ -9,13 +9,16 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Program {
 	public static void main(String[] args){
+		_nativeLookAndFeel();
+		new GpaGui();
+	}
 
-		// [CurentGPA x CurrentCreditHours + (collum CREDIT x grades)] / [CurrentCreditHours+collum creddit hours]
-		System.out.print(System.getProperties().get("os.name"));
+	private static void _nativeLookAndFeel() {
+		System.out.print("{{OS NAME: "+System.getProperties().get("os.name")+"}}\n");
 
 		for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 			System.out.print(info.toString()+"\n");
-			if ("GTK+".equals(info.getName()) || "Windows".equals(info.getName()) || "Aqua".equals(info.getName()) || "substance".equals(info.getName())) {
+			if ("GTK+".equals(info.getName()) || "Windows".equals(info.getName()) || "Quaqua".equals(info.getName()) || "Macintosh".equals(info.getName())) {
 				//"Nimbus".equals(info.getName())
 				try {
 					UIManager.setLookAndFeel(info.getClassName());
@@ -31,8 +34,5 @@ public class Program {
 				break;
 			}
 		}
-
-
-		new GpaGui();
 	}
 }
