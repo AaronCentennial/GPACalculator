@@ -104,7 +104,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		// [CurentGPA x CurrentCreditHours + (collum CREDIT x grades)] / [CurrentCreditHours+collum creddit hours]
 		Component[] components=this._rowPanel.getComponents();
 		/*
-		*
+		* Loop trough all components and get 
 		 */
 		for (int i=0;i<components.length;i++){
 			if (components[i] instanceof JTextField){
@@ -121,10 +121,26 @@ public class GpaGui extends JFrame implements ActionListener {
 
 			}//if JTextField
 		}//components loop
-
-		this._gpaTotalTxt.setText(String.format("Your GPA: %.2f", this._gpaCalculator.getCurrentGPA()));
+		if(this._checkCurrentFieldsValid()) {
+			this._gpaTotalTxt.setText(String.format("Your GPA: %.2f", this._gpaCalculator.getGPA( Double.parseDouble(this._creditHrsTxt.getText()),Double.parseDouble(this._curGPATxt.getText()))));
+		}
 	}
+	
+	private boolean _checkCurrentFieldsValid() {
+		if (this._creditHrsTxt.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null,"Current credit hours is empty");
+			return false;
+		}
+		else if (this._curGPATxt.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null,"Current gpa is empty");
+			return false;
+		}
+		else{
+			return true;
+		}
 
+	}
+	
 	private void createUIComponents() {
 		this._gc=new GridBagConstraints();
 		this._gc.anchor=GridBagConstraints.NORTHWEST;

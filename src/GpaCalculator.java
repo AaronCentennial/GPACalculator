@@ -16,9 +16,10 @@ public class GpaCalculator {
 		this._currentSem.add(new String[]{hours,grade});
 	}
 
-	public double getCurrentGPA(){
+	public double getGPA(double curCreditHrs,double curGPA ){
 		double hrsTotal=0;
 		double gpvTotal=0;
+		double semGPA=0;
 
 		for (String[] i:  this._currentSem){
 			double hours = Double.parseDouble(i[0]);
@@ -28,7 +29,9 @@ public class GpaCalculator {
 		}
 
 		this.clearCurrentSem();
-		return gpvTotal/hrsTotal;
+		semGPA=gpvTotal/hrsTotal;
+
+		return ((semGPA*hrsTotal)+(curGPA*curCreditHrs))/(hrsTotal+curCreditHrs);
 	}
 
 	private void clearCurrentSem(){this._currentSem.clear();}
