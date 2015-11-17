@@ -26,6 +26,7 @@ public class GpaGui extends JFrame implements ActionListener {
 
 	private GpaCalculator _gpaCalculator;
 
+	//constructor
 	GpaGui(){
 		super("GPA Calculator");
 		this._initFrame();
@@ -33,6 +34,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._gpaCalculator=new GpaCalculator();
 	}
 
+	// set config for frame
 	private void _initFrame() {
 		setContentPane(this._contentPane);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,12 +45,14 @@ public class GpaGui extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
+	// adds all action Listeners
 	private void _addActionListeners() {
 		this._exitBtn.addActionListener(this);
 		this._numCoursesCbx.addActionListener(this);
 		this._calculateBtn.addActionListener(this);
 	}
 
+	// dy
 	private void _addRows(int numRows){
 
 		// make sure action listeners are removed :)
@@ -101,7 +105,6 @@ public class GpaGui extends JFrame implements ActionListener {
 	}
 
 	private void _calculateBtnAction() {
-		// [CurentGPA x CurrentCreditHours + (collum CREDIT x grades)] / [CurrentCreditHours+collum creddit hours]
 		Component[] components=this._rowPanel.getComponents();
 		/*
 		* Loop trough all components and get 

@@ -13,6 +13,9 @@ public class Program {
 		new GpaGui();
 	}
 
+	/*
+		Sets the native look
+	 */
 	private static void _nativeLookAndFeel() {
 		System.out.print("{{OS NAME: "+System.getProperties().get("os.name")+"}}\n");
 

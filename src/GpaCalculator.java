@@ -6,20 +6,22 @@ import java.util.ArrayList;
 public class GpaCalculator {
 
 	private ArrayList<String[]> _currentSem;
-	private double _currentGPA;
+
 
 	GpaCalculator(){
 		this._currentSem=new ArrayList<>();
 	}
 
+	//Adds a new course to the array list
 	public void addCourse(String hours, String grade){
 		this._currentSem.add(new String[]{hours,grade});
 	}
 
+	//returns the full gpa
 	public double getGPA(double curCreditHrs,double curGPA ){
 		double hrsTotal=0;
 		double gpvTotal=0;
-		double semGPA=0;
+		double semGPA;
 
 		for (String[] i:  this._currentSem){
 			double hours = Double.parseDouble(i[0]);
@@ -28,13 +30,11 @@ public class GpaCalculator {
 			gpvTotal+=hours*grade;
 		}
 
-		this.clearCurrentSem();
+		this._currentSem.clear();
 		semGPA=gpvTotal/hrsTotal;
 
 		return ((semGPA*hrsTotal)+(curGPA*curCreditHrs))/(hrsTotal+curCreditHrs);
 	}
-
-	private void clearCurrentSem(){this._currentSem.clear();}
 
 
 	private double _toPoints(String grade){
