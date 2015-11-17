@@ -52,7 +52,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._calculateBtn.addActionListener(this);
 	}
 
-	// dy
+	// adds row to the rowPanel JPanel based on user selection
 	private void _addRows(int numRows){
 
 		// make sure action listeners are removed :)
@@ -64,6 +64,10 @@ public class GpaGui extends JFrame implements ActionListener {
 		//Remove all elements
 		this._rowPanel.removeAll();
 
+
+		/*
+		*	Add static elements to _rowPanel
+		 */
 		this._gc.gridx=0;
 		this._gc.gridy=0;
 		this._rowPanel.add(new JLabel("Nr:"),this._gc);
@@ -104,6 +108,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._rowPanel.repaint();
 	}
 
+	// action when calculate Button is clicked
 	private void _calculateBtnAction() {
 		Component[] components=this._rowPanel.getComponents();
 		/*
@@ -128,7 +133,11 @@ public class GpaGui extends JFrame implements ActionListener {
 			this._gpaTotalTxt.setText(String.format("Your GPA: %.2f", this._gpaCalculator.getGPA( Double.parseDouble(this._creditHrsTxt.getText()),Double.parseDouble(this._curGPATxt.getText()))));
 		}
 	}
-	
+
+	/* Check if current credit hours & current GPA
+	*	 valid. AKA check if the fields are empty or
+	*	 if they are not a valid number
+	*/
 	private boolean _checkCurrentFieldsValid() {
 		if (this._creditHrsTxt.getText().isEmpty() || !_isNumeric(this._creditHrsTxt.getText())){
 			JOptionPane.showMessageDialog(null,"Current credit hours is empty or invalid");
@@ -143,7 +152,11 @@ public class GpaGui extends JFrame implements ActionListener {
 		}
 
 	}
-	
+
+	/*
+	*  Custom create certain UI Components
+	*  That IntelliJ doesn't create
+	 */
 	private void createUIComponents() {
 		this._gc=new GridBagConstraints();
 		this._gc.anchor=GridBagConstraints.NORTHWEST;
@@ -154,7 +167,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._gc.insets=new Insets(0,0,0,0);
 
 		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10","100"});
-		this._numCoursesCbx.setEditable(false);
+		this._numCoursesCbx.setEditable(true);
 		this._rowPanel=new JPanel(new GridBagLayout());
 	}
 
@@ -182,7 +195,6 @@ public class GpaGui extends JFrame implements ActionListener {
 		}
 
 	}
-
 
 	private boolean _isNumeric(String str){
 		try{double d = Double.parseDouble(str);}

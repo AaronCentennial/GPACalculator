@@ -35,7 +35,7 @@ public class Program {
 					e.printStackTrace();
 				}
 				break;
-			}
-		}
-	}
-}
+			}//if
+		}//loop
+	}//native look and feel
+}//class
