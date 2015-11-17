@@ -130,12 +130,12 @@ public class GpaGui extends JFrame implements ActionListener {
 	}
 	
 	private boolean _checkCurrentFieldsValid() {
-		if (this._creditHrsTxt.getText().isEmpty()){
-			JOptionPane.showMessageDialog(null,"Current credit hours is empty");
+		if (this._creditHrsTxt.getText().isEmpty() || !_isNumeric(this._creditHrsTxt.getText())){
+			JOptionPane.showMessageDialog(null,"Current credit hours is empty or invalid");
 			return false;
 		}
-		else if (this._curGPATxt.getText().isEmpty()){
-			JOptionPane.showMessageDialog(null,"Current gpa is empty");
+		else if (this._curGPATxt.getText().isEmpty() || !_isNumeric(this._curGPATxt.getText())){
+			JOptionPane.showMessageDialog(null,"Current gpa is empty or invalid");
 			return false;
 		}
 		else{
@@ -154,7 +154,7 @@ public class GpaGui extends JFrame implements ActionListener {
 		this._gc.insets=new Insets(0,0,0,0);
 
 		this._numCoursesCbx = new JComboBox<>(new String[]{"","1","2","3","4","5","6","7","8","9","10","100"});
-		this._numCoursesCbx.setEditable(true);
+		this._numCoursesCbx.setEditable(false);
 		this._rowPanel=new JPanel(new GridBagLayout());
 	}
 
@@ -174,7 +174,6 @@ public class GpaGui extends JFrame implements ActionListener {
 				this._addRows(selected);
 			} catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "You need to enter the number of courses as an integer");
-				e.printStackTrace();
 			}
 
 		}
@@ -184,4 +183,11 @@ public class GpaGui extends JFrame implements ActionListener {
 
 	}
 
+
+	private boolean _isNumeric(String str){
+		try{double d = Double.parseDouble(str);}
+		catch(NumberFormatException nfe)
+		{return false;}
+		return true;
+	}
 }
